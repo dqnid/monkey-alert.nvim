@@ -1,11 +1,22 @@
-local lineBlame = function()
-    // TODO: everything
-    local mail_blame = os.execute("git blame -e  .githooks/pre-commit")
-    local mail_blame_awk = os.execute("git blame -e .githooks/pre-commit | awk '{ print $2 $6}'");
-    local test_str = "24a332e7 (<dani.heras@hotmail.com> 2025-09-08 19:42:51 +0200 39) email=$(git config user.email)"
-    local results = test_str:match(".*<(.*)>.* ([0-9]+)\)")
-    local results = test_str:match(".*<(.*)>.* ([0-9]+)\)")
+local lineBlame = function(input_file_path, comma_separated_mails)
+    local handler = io.popen("git blame -e " .. input_file_path .. " | awk '{ print $2$6}'")
+
+    if handler == nil then
+        return nil
+    end
+
+    local result = handler:read("L")
+    while result do
+        for k, v in string.gmatch(result, "%(<(.+)>(%d+)%)") do
+            print(k)
+            print(v)
+        end
+        result = handler:read("L")
+    end
+    handler:close()
 end
+
+-- lineBlame("./README.md")
 
 return {
     lineBlame = lineBlame,

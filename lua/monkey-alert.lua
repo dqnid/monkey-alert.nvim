@@ -2,11 +2,11 @@ local blame = require("./line-blame.lua")
 
 local defaultList = "one;two"
 vim.g.monkeyMailList = defaultList
-vim.g.monkeyUserList = defaultList
+-- vim.g.monkeyUserList = defaultList
 
 local function setup(opts)
     vim.g.monkeyMailList = opts.monkeyMailList
-    vim.g.monkeyUserList = opts.monkeyUserList
+    -- vim.g.monkeyUserList = opts.monkeyUserList
 end
 
 local function observe()
@@ -16,6 +16,7 @@ end
 return {
     setup = setup,
     observe = observe,
+    blame = blame.lineBlame
 }
 
 -- NOTE:
