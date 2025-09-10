@@ -10,7 +10,8 @@ local function setup(opts)
 end
 
 local function blameCurrentFile()
-    blame.lineBlame(vim.api.nvim_buf_get_name(0))
+    blame.lineBlame(vim.api.nvim_buf_get_name(0), "test,another,dani.heras@hotmail.com,final", "| Found a fkin monkey 🐒",
+        "Normal", "eol")
 end
 
 return {
