@@ -28,9 +28,19 @@ local function clearBlame()
     blame.clearBlame()
 end
 
+local function enableOnLine()
+    vim.api.nvim_create_autocmd("CursorMoved", {
+        callback = function(opts)
+            clearBlame()
+            blameCurrentLine()
+        end,
+    })
+end
+
 return {
     setup = setup,
     blameLine = blameCurrentLine,
     blameFile = blameCurrentFile,
-    blameClear = clearBlame
+    blameClear = clearBlame,
+    enable = enableOnLine
 }

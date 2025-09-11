@@ -9,7 +9,7 @@ local setNvimMark = function(line_number, blame_text, blame_highlight, blame_pos
         id = line_number + 1, -- cant be 0
         virt_text = { { blame_text, blame_highlight } },
         virt_text_pos = blame_position,
-        priority = 700,
+        priority = 1004,
         hl_mode = 'combine',
     })
 end
