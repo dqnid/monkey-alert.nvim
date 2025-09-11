@@ -18,12 +18,19 @@ local function blameCurrentFile()
 end
 
 local function blameCurrentLine()
-    blame.lineBlame(vim.api.nvim_buf_get_name(0), vim.g.monkeyMailList, vim.g.monkeyBlameText,
+    local row = vim.api.nvim_win_get_cursor(0)[1]
+    blame.lineBlame(vim.api.nvim_buf_get_name(0), tonumber(row) - 1, vim.g.monkeyMailList,
+        vim.g.monkeyBlameText,
         "Monkey", vim.g.monkeyBlamePosition)
+end
+
+local function clearBlame()
+    blame.clearBlame()
 end
 
 return {
     setup = setup,
     blameLine = blameCurrentLine,
-    blameFile = blameCurrentFile
+    blameFile = blameCurrentFile,
+    blameClear = clearBlame
 }
