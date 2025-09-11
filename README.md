@@ -30,3 +30,6 @@ Git line blame by mail.
     },
 },
 ```
+
+## Example
+<img width="715" height="291" alt="monkey-alert" src="https://github.com/user-attachments/assets/f979954e-53b7-473b-a55e-7b8c722825e7" />
