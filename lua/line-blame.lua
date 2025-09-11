@@ -41,9 +41,6 @@ local lineBlame = function(input_file_path, line_number, input_comma_separated_m
     end
 end
 
--- lineBlame
---  does everything the plugin needs xd
--- @param blame_highlight: 'Normal'
 -- @param blame_position: 'eol' | 'overlay' | 'right_align'
 local fileBlame = function(input_file_path, input_comma_separated_mail_list, blame_text, blame_highlight, blame_position)
     local handler = io.popen("git blame -e " .. input_file_path .. " | awk '{print $2$6}'")
