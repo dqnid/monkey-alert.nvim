@@ -19,7 +19,7 @@ Git line blame by mail.
 
 ```lua
 {
-    dir = "dqnid/monkey-alert.nvim",
+    "dqnid/monkey-alert.nvim",
     name = "monkey-alert",
     opts = {
         monkey_mail_list = "john@doe.org,another@dude.me",
