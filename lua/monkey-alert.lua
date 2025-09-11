@@ -26,8 +26,10 @@ end
 local function enableOnLine()
     vim.api.nvim_create_autocmd("CursorMoved", {
         callback = function()
-            clearBlame()
-            blameCurrentLine()
+            if vim.bo.buftype == nil or vim.bo.buftype == '' then
+                clearBlame()
+                blameCurrentLine()
+            end
         end,
     })
 end
