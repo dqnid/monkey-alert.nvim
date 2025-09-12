@@ -5,7 +5,7 @@
 
 Git line blame by mail.
 
-## Options
+## 🔧 Options
 
 - `blame_text_color_hex`: hex color to use as foreground.
 - `monkey_mail_list`: list of github account emails separated by a single comma ",".
@@ -13,9 +13,9 @@ Git line blame by mail.
 - `blame_position`: 'eol' or 'overlay' or 'right_align'.
 - `auto_attach`: whether or not create an autocmd to blame the current line automatically.
 
-## Usage
+## 🐾 Usage
 
-### Lazyvim
+### 💤 Lazyvim
 
 ```lua
 {
@@ -31,5 +31,10 @@ Git line blame by mail.
 },
 ```
 
-## Example
+## 🎬 Example
+
 <img width="715" height="291" alt="monkey-alert" src="https://github.com/user-attachments/assets/f979954e-53b7-473b-a55e-7b8c722825e7" />
+
+## 🚨 Known issues
+
+- [ ] Error on non-git files.
