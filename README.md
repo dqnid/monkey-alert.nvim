@@ -37,4 +37,5 @@ Git line blame by mail.
 
 ## 🚨 Known issues
 
-- [ ] Error on non-git files.
+- [x] Error on non-git files.
+- [ ] Performance: the autocmd should not be processed on non-git files, to this date it is simply not displayed but a `$ git log` is run.

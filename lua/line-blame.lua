@@ -16,8 +16,15 @@ end
 
 local lineBlame = function(input_file_path, line_number, input_comma_separated_mail_list, blame_text, blame_highlight,
                            blame_position)
+    local git_exit_code = os.execute("git log >/dev/null 2>&1")
+
+    if git_exit_code ~= 0 then
+        return nil
+    end
+
     local handler = io.popen("git blame -L " .. line_number .. "," .. line_number .. " -e " ..
         input_file_path .. " | awk '{print $2}'")
+
     if handler == nil then
         return nil
     end
@@ -30,7 +37,7 @@ local lineBlame = function(input_file_path, line_number, input_comma_separated_m
 
     local mail = string.match(result, "%(<(.+)>")
 
-    if not mail then
+    if not mail or mail == nil or mail == "" then
         return nil
     end
 

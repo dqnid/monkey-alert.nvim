@@ -23,13 +23,23 @@ local function blameCurrentLine()
         "Monkey", vim.g.monkey_blame_position)
 end
 
+local function updateLineBlame()
+    if vim.bo.buftype == nil or vim.bo.buftype == '' then
+        clearBlame()
+        blameCurrentLine()
+    end
+end
+
 local function enableOnLine()
+    -- vim.api.nvim_create_autocmd("BufNew", {
+    --     callback = function(event)
+    --         local status = vim.api.nvim_buf_attach(event.buf, false, { on_changedtick = updateLineBlame })
+    --         -- status == false, for buffers that aren't bound to a file, because the buffer isn't loaded yet
+    --     end
+    -- })
     vim.api.nvim_create_autocmd("CursorMoved", {
         callback = function()
-            if vim.bo.buftype == nil or vim.bo.buftype == '' then
-                clearBlame()
-                blameCurrentLine()
-            end
+            updateLineBlame()
         end,
     })
 end
